@@ -9,11 +9,15 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @State private var alertType: HomeViewModel.AlertType?
     
     var body: some View {
         NavigationView {
             VStack {
                 PrimaryButton(title: "条件を設定して時刻を判定する") {
+                    withAnimation {
+                        viewModel.editMode = .inactive
+                    }
                     viewModel.showSettingsView.toggle()
                 }
                 .padding()
@@ -47,7 +51,7 @@ struct HomeView: View {
             }
             .navigationTitle("Time Checker")
             .environment(\.editMode, $viewModel.editMode)
-            .alert(item: $viewModel.alertType) { alertType in
+            .alert(item: $alertType) { alertType in
                 switch alertType {
                 case .deleteSelected:
                     return AlertForDeleteSelected
@@ -62,6 +66,9 @@ struct HomeView: View {
             })
             .onAppear {
                 viewModel.fetchTestResults()
+            }
+            .onReceive(viewModel.$alertType) { newAlertType in
+                alertType = newAlertType
             }
         }
     }

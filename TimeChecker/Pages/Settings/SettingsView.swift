@@ -11,7 +11,7 @@ struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
     @Environment(\.presentationMode) var presentationMode
 
-    var delegate: SettingsViewModelDelegate
+    let delegate: SettingsViewModelDelegate
 
     var body: some View {
         NavigationView {

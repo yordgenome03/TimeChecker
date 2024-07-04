@@ -9,7 +9,7 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject {
     
-    enum AlertType: Identifiable {
+    enum AlertType: Identifiable, Equatable {
         case deleteSelected
         case deleteAll
         case newResult(TestResult)
@@ -60,7 +60,7 @@ extension HomeViewModel: SettingsViewModelDelegate {
     
     @MainActor
     func didSaveTestResult(_ result: TestResult) {
-        alertType = .newResult(result)
         fetchTestResults()
+        alertType = .newResult(result)
     }
 }
