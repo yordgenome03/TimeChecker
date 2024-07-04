@@ -17,6 +17,12 @@ struct TimeRange {
     }
     
     func contains(_ time: Int) -> Bool {
-        return false
+        if start == end {
+            return time == start
+        } else if start < end {
+            return time >= start && time < end
+        } else {
+            return time >= start || time < end
+        }
     }
 }
