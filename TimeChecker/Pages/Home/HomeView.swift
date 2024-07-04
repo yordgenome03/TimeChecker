@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @State private var alertType: HomeViewModel.AlertType?
-
     var body: some View {
         NavigationView {
             VStack {
@@ -27,13 +26,17 @@ struct HomeView: View {
                 .padding(.top, 16)
                 
                 if viewModel.showDescription {
-                    VStack(spacing: 24) {
-                        Text("【概要】\nこのアプリは、開始時刻と終了時刻、判定対象時刻を入力し、判定対象時刻が指定した時刻の範囲にあるかどうかを判定します。")
+                    ScrollView {
                         
-                        Text("【ルール】\n・範囲指定は、開始時刻を含み、終了時刻は含まない。\n・開始時刻が22時で終了時刻が5時、というような指定の場合、終了時刻を翌5時と判定する。\n・判定結果OK；対象時刻が指定範囲内。\n・判定結果NG：対象時刻が指定範囲外。")
+                        VStack(spacing: 24) {
+                            Text("【概要】\nこのアプリは、開始時刻と終了時刻、判定対象時刻を入力し、判定対象時刻が指定した時刻の範囲にあるかどうかを判定します。")
+                            
+                            Text("【ルール】\n・範囲指定は、開始時刻を含み、終了時刻は含まない。\n・ただし開始時刻と終了時刻が同じ場合は含むと判断する。\n・開始時刻が22時で終了時刻が5時、というような指定の場合、終了時刻を翌5時と判定する。\n・判定結果OK；対象時刻が指定範囲内。\n・判定結果NG：対象時刻が指定範囲外。")
+                        }
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding()
                     }
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding()
+                    
                     .background(
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.accentColor, lineWidth: 2)
@@ -47,7 +50,6 @@ struct HomeView: View {
                     viewModel.showSettingsView.toggle()
                 }
                 .padding()
-                
                 HStack {
                     Text("判定結果の履歴")
                         .font(.headline)
@@ -72,9 +74,9 @@ struct HomeView: View {
                     }
                     .listStyle(.plain)
                 }
-                
                 Spacer()
             }
+            .edgesIgnoringSafeArea(.bottom)
             .navigationTitle("Time Checker")
             .environment(\.editMode, $viewModel.editMode)
             .alert(item: $alertType) { alertType in
@@ -146,7 +148,7 @@ extension HomeView {
                 IconTextButton(title: "すべて削除する", systemImage: "trash.fill", color: .red) {
                     viewModel.alertType = .deleteAll
                 }
-
+                
                 IconTextButton(title: "編集", systemImage: "square.and.pencil", color: .accentColor) {
                     withAnimation {
                         viewModel.editMode = .active
