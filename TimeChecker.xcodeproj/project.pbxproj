@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A1BAC86B2C366F0800F96F77 /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC86A2C366EFF00F96F77 /* TimeRange.swift */; };
 		A1BAC86E2C3671B200F96F77 /* TimeRangeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC86D2C3671B200F96F77 /* TimeRangeError.swift */; };
+		A1BAC8732C36757D00F96F77 /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8722C36757D00F96F77 /* TestResult.swift */; };
 		A1CA0F1A2C364C760057711F /* TimeCheckerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA0F192C364C760057711F /* TimeCheckerApp.swift */; };
 		A1CA0F1C2C364C760057711F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA0F1B2C364C760057711F /* ContentView.swift */; };
 		A1CA0F1E2C364C780057711F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CA0F1D2C364C780057711F /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		A1BAC86A2C366EFF00F96F77 /* TimeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRange.swift; sourceTree = "<group>"; };
 		A1BAC86D2C3671B200F96F77 /* TimeRangeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRangeError.swift; sourceTree = "<group>"; };
+		A1BAC8722C36757D00F96F77 /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
 		A1CA0F162C364C760057711F /* TimeChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CA0F192C364C760057711F /* TimeCheckerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckerApp.swift; sourceTree = "<group>"; };
 		A1CA0F1B2C364C760057711F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		A1BAC8692C366EF800F96F77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A1BAC8722C36757D00F96F77 /* TestResult.swift */,
 				A1BAC86A2C366EFF00F96F77 /* TimeRange.swift */,
 			);
 			path = Models;
@@ -283,6 +286,7 @@
 				A1CA0F1A2C364C760057711F /* TimeCheckerApp.swift in Sources */,
 				A1BAC86E2C3671B200F96F77 /* TimeRangeError.swift in Sources */,
 				A1BAC86B2C366F0800F96F77 /* TimeRange.swift in Sources */,
+				A1BAC8732C36757D00F96F77 /* TestResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

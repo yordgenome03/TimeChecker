@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TimeRange {
+struct TimeRange: Hashable {
     let start: Int
     let end: Int
     
@@ -33,4 +33,10 @@ struct TimeRange {
             return time >= start || time < end
         }
     }
+}
+
+extension TimeRange {
+    static let mock_eightToSixteen: TimeRange = .init(start: 8, end: 16)!
+    static let mock_sixteenToEight: TimeRange = .init(start: 16, end: 8)!
+    static let mock_zeroToZero: TimeRange = .init(start: 0, end: 0)!
 }
