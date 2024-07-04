@@ -8,26 +8,26 @@
 import Foundation
 
 class UserDefaultsService {
-    func save(results: [TestResult]) {
+    func save(results: [TimeCheckResult]) {
         if let data = try? JSONEncoder().encode(results) {
-            UserDefaults.standard.set(data, forKey: Keys.testResults)
+            UserDefaults.standard.set(data, forKey: Keys.timeCheckResults)
         }
     }
     
-    func fetchResults() -> [TestResult] {
-        if let data = UserDefaults.standard.data(forKey: Keys.testResults),
-           let results = try? JSONDecoder().decode([TestResult].self, from: data) {
+    func fetchResults() -> [TimeCheckResult] {
+        if let data = UserDefaults.standard.data(forKey: Keys.timeCheckResults),
+           let results = try? JSONDecoder().decode([TimeCheckResult].self, from: data) {
             return results
         }
         return []
     }
     
-    func delete(results: [TestResult]) {
+    func delete(results: [TimeCheckResult]) {
         let currentResults = fetchResults().filter { !results.contains($0) }
         save(results: currentResults)
     }
     
     func deleteAllResults() {
-        UserDefaults.standard.removeObject(forKey: Keys.testResults)
+        UserDefaults.standard.removeObject(forKey: Keys.timeCheckResults)
     }
 }

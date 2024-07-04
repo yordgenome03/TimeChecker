@@ -8,5 +8,5 @@
 import SwiftUI
 
 enum Keys {
-    static let testResults = "testResults"
+    static let timeCheckResults = "timeCheckResults"
 }

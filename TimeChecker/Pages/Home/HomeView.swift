@@ -27,7 +27,6 @@ struct HomeView: View {
                 
                 if viewModel.showDescription {
                     ScrollView {
-                        
                         VStack(spacing: 24) {
                             Text("【概要】\nこのアプリは、開始時刻と終了時刻、判定対象時刻を入力し、判定対象時刻が指定した時刻の範囲にあるかどうかを判定します。")
                             
@@ -36,7 +35,6 @@ struct HomeView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .padding()
                     }
-                    
                     .background(
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.accentColor, lineWidth: 2)
@@ -65,6 +63,8 @@ struct HomeView: View {
                 
                 if viewModel.testResults.isEmpty {
                     Text("表示する判定結果がありません。")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                        .padding()
                 } else {
                     List(selection: $viewModel.selection) {
                         ForEach(viewModel.testResults, id: \.id) { result in
@@ -103,7 +103,7 @@ struct HomeView: View {
 }
 
 extension HomeView {
-    private func ResultView(_ result: TestResult) -> some View {
+    private func ResultView(_ result: TimeCheckResult) -> some View {
         HStack {
             VStack {
                 Text("判定結果")
@@ -200,7 +200,7 @@ extension HomeView {
               secondaryButton: .default(Text("キャンセル")))
     }
     
-    private func AlertForNewResult(_ result: TestResult) -> Alert {
+    private func AlertForNewResult(_ result: TimeCheckResult) -> Alert {
         let title = "結果: \(result.isContained ? "OK" : "NG")"
         let message = "時間範囲：\(result.timeRange.start)時 ~ \(result.timeRange.end)時\n判定対象時刻：\(result.target)時"
         return Alert(title: Text(title),

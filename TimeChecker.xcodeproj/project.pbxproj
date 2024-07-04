@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A1BAC86B2C366F0800F96F77 /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC86A2C366EFF00F96F77 /* TimeRange.swift */; };
 		A1BAC86E2C3671B200F96F77 /* TimeRangeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC86D2C3671B200F96F77 /* TimeRangeError.swift */; };
-		A1BAC8732C36757D00F96F77 /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8722C36757D00F96F77 /* TestResult.swift */; };
+		A1BAC8732C36757D00F96F77 /* TimeCheckResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8722C36757D00F96F77 /* TimeCheckResult.swift */; };
 		A1BAC8772C36766400F96F77 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8762C36766400F96F77 /* HomeView.swift */; };
 		A1BAC87A2C36769D00F96F77 /* Binding+Equatable..swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8792C36769D00F96F77 /* Binding+Equatable..swift */; };
 		A1BAC87E2C367F2500F96F77 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC87D2C367F2500F96F77 /* SettingsView.swift */; };
@@ -19,15 +19,13 @@
 		A1BAC8882C368B9800F96F77 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8872C368B9800F96F77 /* UserDefaultsService.swift */; };
 		A1BAC88A2C368FDA00F96F77 /* UserDefaultsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8892C368FDA00F96F77 /* UserDefaultsServiceTests.swift */; };
 		A1BAC88D2C36918700F96F77 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC88C2C36918700F96F77 /* Constants.swift */; };
-		A1BAC88F2C36950800F96F77 /* TestResultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC88E2C36950800F96F77 /* TestResultRepository.swift */; };
-		A1BAC8912C36966400F96F77 /* TestResultRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8902C36966400F96F77 /* TestResultRepositoryTests.swift */; };
+		A1BAC88F2C36950800F96F77 /* TimeCheckResultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC88E2C36950800F96F77 /* TimeCheckResultRepository.swift */; };
+		A1BAC8912C36966400F96F77 /* TimeCheckResultRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8902C36966400F96F77 /* TimeCheckResultRepositoryTests.swift */; };
 		A1BAC8932C36DC1300F96F77 /* IconTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8922C36DC1300F96F77 /* IconTextButton.swift */; };
 		A1CA0F1A2C364C760057711F /* TimeCheckerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA0F192C364C760057711F /* TimeCheckerApp.swift */; };
 		A1CA0F1E2C364C780057711F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CA0F1D2C364C780057711F /* Assets.xcassets */; };
 		A1CA0F212C364C780057711F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CA0F202C364C780057711F /* Preview Assets.xcassets */; };
 		A1CA0F2B2C364C780057711F /* TimeRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA0F2A2C364C780057711F /* TimeRangeTests.swift */; };
-		A1CA0F352C364C780057711F /* TimeCheckerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA0F342C364C780057711F /* TimeCheckerUITests.swift */; };
-		A1CA0F372C364C780057711F /* TimeCheckerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA0F362C364C780057711F /* TimeCheckerUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +48,7 @@
 /* Begin PBXFileReference section */
 		A1BAC86A2C366EFF00F96F77 /* TimeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRange.swift; sourceTree = "<group>"; };
 		A1BAC86D2C3671B200F96F77 /* TimeRangeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRangeError.swift; sourceTree = "<group>"; };
-		A1BAC8722C36757D00F96F77 /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
+		A1BAC8722C36757D00F96F77 /* TimeCheckResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckResult.swift; sourceTree = "<group>"; };
 		A1BAC8762C36766400F96F77 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A1BAC8792C36769D00F96F77 /* Binding+Equatable..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Equatable..swift"; sourceTree = "<group>"; };
 		A1BAC87D2C367F2500F96F77 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -60,8 +58,8 @@
 		A1BAC8872C368B9800F96F77 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		A1BAC8892C368FDA00F96F77 /* UserDefaultsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsServiceTests.swift; sourceTree = "<group>"; };
 		A1BAC88C2C36918700F96F77 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A1BAC88E2C36950800F96F77 /* TestResultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultRepository.swift; sourceTree = "<group>"; };
-		A1BAC8902C36966400F96F77 /* TestResultRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultRepositoryTests.swift; sourceTree = "<group>"; };
+		A1BAC88E2C36950800F96F77 /* TimeCheckResultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckResultRepository.swift; sourceTree = "<group>"; };
+		A1BAC8902C36966400F96F77 /* TimeCheckResultRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckResultRepositoryTests.swift; sourceTree = "<group>"; };
 		A1BAC8922C36DC1300F96F77 /* IconTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextButton.swift; sourceTree = "<group>"; };
 		A1CA0F162C364C760057711F /* TimeChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CA0F192C364C760057711F /* TimeCheckerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckerApp.swift; sourceTree = "<group>"; };
@@ -70,8 +68,6 @@
 		A1CA0F262C364C780057711F /* TimeCheckerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeCheckerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CA0F2A2C364C780057711F /* TimeRangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRangeTests.swift; sourceTree = "<group>"; };
 		A1CA0F302C364C780057711F /* TimeCheckerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeCheckerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1CA0F342C364C780057711F /* TimeCheckerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckerUITests.swift; sourceTree = "<group>"; };
-		A1CA0F362C364C780057711F /* TimeCheckerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +98,10 @@
 		A1BAC8692C366EF800F96F77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A1BAC8722C36757D00F96F77 /* TestResult.swift */,
+				A1BAC8722C36757D00F96F77 /* TimeCheckResult.swift */,
 				A1BAC86A2C366EFF00F96F77 /* TimeRange.swift */,
 				A1BAC8872C368B9800F96F77 /* UserDefaultsService.swift */,
-				A1BAC88E2C36950800F96F77 /* TestResultRepository.swift */,
+				A1BAC88E2C36950800F96F77 /* TimeCheckResultRepository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,7 +171,6 @@
 			children = (
 				A1CA0F182C364C760057711F /* TimeChecker */,
 				A1CA0F292C364C780057711F /* TimeCheckerTests */,
-				A1CA0F332C364C780057711F /* TimeCheckerUITests */,
 				A1CA0F172C364C760057711F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -219,18 +214,9 @@
 			children = (
 				A1CA0F2A2C364C780057711F /* TimeRangeTests.swift */,
 				A1BAC8892C368FDA00F96F77 /* UserDefaultsServiceTests.swift */,
-				A1BAC8902C36966400F96F77 /* TestResultRepositoryTests.swift */,
+				A1BAC8902C36966400F96F77 /* TimeCheckResultRepositoryTests.swift */,
 			);
 			path = TimeCheckerTests;
-			sourceTree = "<group>";
-		};
-		A1CA0F332C364C780057711F /* TimeCheckerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A1CA0F342C364C780057711F /* TimeCheckerUITests.swift */,
-				A1CA0F362C364C780057711F /* TimeCheckerUITestsLaunchTests.swift */,
-			);
-			path = TimeCheckerUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,12 +357,12 @@
 				A1BAC86E2C3671B200F96F77 /* TimeRangeError.swift in Sources */,
 				A1BAC8932C36DC1300F96F77 /* IconTextButton.swift in Sources */,
 				A1BAC86B2C366F0800F96F77 /* TimeRange.swift in Sources */,
-				A1BAC88F2C36950800F96F77 /* TestResultRepository.swift in Sources */,
+				A1BAC88F2C36950800F96F77 /* TimeCheckResultRepository.swift in Sources */,
 				A1BAC87A2C36769D00F96F77 /* Binding+Equatable..swift in Sources */,
 				A1BAC88D2C36918700F96F77 /* Constants.swift in Sources */,
 				A1BAC87E2C367F2500F96F77 /* SettingsView.swift in Sources */,
 				A1BAC8772C36766400F96F77 /* HomeView.swift in Sources */,
-				A1BAC8732C36757D00F96F77 /* TestResult.swift in Sources */,
+				A1BAC8732C36757D00F96F77 /* TimeCheckResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +372,7 @@
 			files = (
 				A1BAC88A2C368FDA00F96F77 /* UserDefaultsServiceTests.swift in Sources */,
 				A1CA0F2B2C364C780057711F /* TimeRangeTests.swift in Sources */,
-				A1BAC8912C36966400F96F77 /* TestResultRepositoryTests.swift in Sources */,
+				A1BAC8912C36966400F96F77 /* TimeCheckResultRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,8 +380,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1CA0F352C364C780057711F /* TimeCheckerUITests.swift in Sources */,
-				A1CA0F372C364C780057711F /* TimeCheckerUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

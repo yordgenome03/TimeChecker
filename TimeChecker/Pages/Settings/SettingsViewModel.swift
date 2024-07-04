@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol SettingsViewModelDelegate: AnyObject {
-    func didSaveTestResult(_ result: TestResult)
+    func didSaveTestResult(_ result: TimeCheckResult)
 }
 
 @MainActor
@@ -20,15 +20,15 @@ class SettingsViewModel: ObservableObject {
     
     weak var delegate: SettingsViewModelDelegate?
 
-    private let repository: TestResultRepositoryInterface
+    private let repository: TimeCheckResultRepositoryInterface
     
-    init(repository: TestResultRepositoryInterface = TestResultRepository()) {
+    init(repository: TimeCheckResultRepositoryInterface = TimeCheckResultRepository()) {
         self.repository = repository
     }
     
     func judgeAndSaveResult() throws {
         guard let timeRange = TimeRange(start: startTime, end: endTime),
-              let result = TestResult(timeRange: timeRange, target: targetTime) else {
+              let result = TimeCheckResult(timeRange: timeRange, target: targetTime) else {
             throw TimeRangeError.invalid
         }
         

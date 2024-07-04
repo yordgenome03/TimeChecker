@@ -10,12 +10,12 @@ import XCTest
 
 final class UserDefaultsServiceTests: XCTestCase {
     
-    var backUpResults: [TestResult]?
+    var backUpResults: [TimeCheckResult]?
     var service: UserDefaultsService!
     
     override func setUpWithError() throws {
-        if let data = UserDefaults.standard.data(forKey: Keys.testResults),
-           let results = try? JSONDecoder().decode([TestResult].self, from: data) {
+        if let data = UserDefaults.standard.data(forKey: Keys.timeCheckResults),
+           let results = try? JSONDecoder().decode([TimeCheckResult].self, from: data) {
             backUpResults = results
             
             removeSavedResults()
@@ -29,7 +29,7 @@ final class UserDefaultsServiceTests: XCTestCase {
         
         if let backUpResults {
             if let data = try? JSONEncoder().encode(backUpResults) {
-                UserDefaults.standard.set(data, forKey: Keys.testResults)
+                UserDefaults.standard.set(data, forKey: Keys.timeCheckResults)
             }
         }
         
@@ -38,7 +38,7 @@ final class UserDefaultsServiceTests: XCTestCase {
     }
     
     private func removeSavedResults() {
-        UserDefaults.standard.removeObject(forKey: Keys.testResults)
+        UserDefaults.standard.removeObject(forKey: Keys.timeCheckResults)
     }
     
     
@@ -46,7 +46,7 @@ final class UserDefaultsServiceTests: XCTestCase {
         let initialResults = service.fetchResults()
         XCTAssertTrue(initialResults.isEmpty)
         
-        let newResults = TestResult.mockArray
+        let newResults = TimeCheckResult.mockArray
         service.save(results: newResults)
         let fetchedNewResults = service.fetchResults()
         XCTAssertEqual(fetchedNewResults, newResults)
@@ -65,7 +65,7 @@ final class UserDefaultsServiceTests: XCTestCase {
         let initialResults = service.fetchResults()
         XCTAssertTrue(initialResults.isEmpty)
         
-        let newResults = TestResult.mockArray
+        let newResults = TimeCheckResult.mockArray
         service.save(results: newResults)
         let fetchedNewResults = service.fetchResults()
         XCTAssertEqual(fetchedNewResults, newResults)

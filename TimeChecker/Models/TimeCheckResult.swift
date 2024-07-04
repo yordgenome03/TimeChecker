@@ -1,5 +1,5 @@
 //
-//  TestResult.swift
+//  TimeCheckResult.swift
 //  TimeChecker
 //
 //  Created by yotahara on 2024/07/04.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TestResult: Identifiable, Hashable, Codable {
+struct TimeCheckResult: Identifiable, Hashable, Codable {
     var id = UUID()
     let timeRange: TimeRange
     let target: Int
@@ -24,8 +24,8 @@ struct TestResult: Identifiable, Hashable, Codable {
     }
 }
 
-extension TestResult {
-    static let mockArray: [TestResult] = [
+extension TimeCheckResult {
+    static let mockArray: [TimeCheckResult] = [
         .init(timeRange: .mock_eightToSixteen, target: 1)!,
         .init(timeRange: .mock_eightToSixteen, target: 10)!,
         .init(timeRange: .mock_eightToSixteen, target: 16)!,

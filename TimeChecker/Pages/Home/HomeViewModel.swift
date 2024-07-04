@@ -12,21 +12,21 @@ class HomeViewModel: ObservableObject {
     enum AlertType: Identifiable, Equatable {
         case deleteSelected
         case deleteAll
-        case newResult(TestResult)
+        case newResult(TimeCheckResult)
         
         var id: UUID { UUID() }
     }
     
-    @Published var testResults: [TestResult] = []
+    @Published var testResults: [TimeCheckResult] = []
     @Published var selection = Set<UUID>()
     @Published var editMode: EditMode = .inactive
     @Published var alertType: AlertType?
     @Published var showSettingsView = false
     @Published var showDescription = true
 
-    private let repository: TestResultRepositoryInterface
+    private let repository: TimeCheckResultRepositoryInterface
     
-    init(repository: TestResultRepositoryInterface = TestResultRepository()) {
+    init(repository: TimeCheckResultRepositoryInterface = TimeCheckResultRepository()) {
         self.repository = repository
     }
     
@@ -60,7 +60,7 @@ class HomeViewModel: ObservableObject {
 extension HomeViewModel: SettingsViewModelDelegate {
     
     @MainActor
-    func didSaveTestResult(_ result: TestResult) {
+    func didSaveTestResult(_ result: TimeCheckResult) {
         fetchTestResults()
         alertType = .newResult(result)
     }
