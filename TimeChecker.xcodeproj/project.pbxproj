@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A1BAC86B2C366F0800F96F77 /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC86A2C366EFF00F96F77 /* TimeRange.swift */; };
+		A1BAC86E2C3671B200F96F77 /* TimeRangeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC86D2C3671B200F96F77 /* TimeRangeError.swift */; };
 		A1CA0F1A2C364C760057711F /* TimeCheckerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA0F192C364C760057711F /* TimeCheckerApp.swift */; };
 		A1CA0F1C2C364C760057711F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA0F1B2C364C760057711F /* ContentView.swift */; };
 		A1CA0F1E2C364C780057711F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CA0F1D2C364C780057711F /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		A1BAC86A2C366EFF00F96F77 /* TimeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRange.swift; sourceTree = "<group>"; };
+		A1BAC86D2C3671B200F96F77 /* TimeRangeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRangeError.swift; sourceTree = "<group>"; };
 		A1CA0F162C364C760057711F /* TimeChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CA0F192C364C760057711F /* TimeCheckerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckerApp.swift; sourceTree = "<group>"; };
 		A1CA0F1B2C364C760057711F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		A1BAC86C2C3671AC00F96F77 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				A1BAC86D2C3671B200F96F77 /* TimeRangeError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		A1CA0F0D2C364C760057711F = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				A1CA0F192C364C760057711F /* TimeCheckerApp.swift */,
+				A1BAC86C2C3671AC00F96F77 /* Errors */,
 				A1BAC8692C366EF800F96F77 /* Models */,
 				A1CA0F1B2C364C760057711F /* ContentView.swift */,
 				A1CA0F1D2C364C780057711F /* Assets.xcassets */,
@@ -270,6 +281,7 @@
 			files = (
 				A1CA0F1C2C364C760057711F /* ContentView.swift in Sources */,
 				A1CA0F1A2C364C760057711F /* TimeCheckerApp.swift in Sources */,
+				A1BAC86E2C3671B200F96F77 /* TimeRangeError.swift in Sources */,
 				A1BAC86B2C366F0800F96F77 /* TimeRange.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
