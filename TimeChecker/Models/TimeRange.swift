@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TimeRange: Hashable {
+struct TimeRange: Hashable, Codable {
     let start: Int
     let end: Int
     

@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct TestResult: Identifiable, Hashable {
-    let id = UUID()
+struct TestResult: Identifiable, Hashable, Codable {
+    var id = UUID()
     let timeRange: TimeRange
     let target: Int
     let isContained: Bool
