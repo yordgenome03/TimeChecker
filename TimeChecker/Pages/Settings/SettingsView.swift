@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
     @Environment(\.presentationMode) var presentationMode
+    @State private var showKeyboard = false
 
     let delegate: SettingsViewModelDelegate
 
@@ -54,6 +55,39 @@ struct SettingsView: View {
                 .padding()
             }
             .navigationTitle("Settings")
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing){
+                    HStack{
+                        Spacer()
+                        
+                        if self.showKeyboard {
+                            Button {
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                            } label: {
+                                HStack(spacing: 0) {
+                                    Image(systemName: "xmark")
+                                    Image(systemName: "keyboard")
+                                }
+                                .padding(4)
+                                .background(
+                                 RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.accentColor)
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
+                withAnimation {
+                    self.showKeyboard = true
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
+                withAnimation {
+                    self.showKeyboard = false
+                }
+            }
             .alert(item: $viewModel.error) { error in
                 Alert(title: Text("エラー"),
                       message: Text(error.description),
