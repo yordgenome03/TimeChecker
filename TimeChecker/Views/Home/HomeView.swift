@@ -24,18 +24,8 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Button {
+                PrimaryButton(title: "条件を設定して時刻を判定する") {
                     showSettingsView.toggle()
-                } label: {
-                    Text("条件を設定して時刻を判定する")
-                        .font(.body.bold())
-                        .foregroundColor(Color.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .foregroundColor(Color.accentColor)
-                        )
                 }
                 .padding()
                 
@@ -77,8 +67,7 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $showSettingsView, content: {
-                // TODO: 設定画面表示
-                EmptyView()
+                SettingsView()
             })
             .onAppear {
                 // TODO: 履歴取得処理と差し替える
