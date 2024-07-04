@@ -12,8 +12,9 @@ class HomeViewModel: ObservableObject {
     enum AlertType: Identifiable {
         case deleteSelected
         case deleteAll
+        case newResult(TestResult)
         
-        var id: Int { hashValue }
+        var id: UUID { UUID() }
     }
     
     @Published var testResults: [TestResult] = []
@@ -59,6 +60,7 @@ extension HomeViewModel: SettingsViewModelDelegate {
     
     @MainActor
     func didSaveTestResult(_ result: TestResult) {
+        alertType = .newResult(result)
         fetchTestResults()
     }
 }

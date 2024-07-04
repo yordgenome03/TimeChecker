@@ -53,6 +53,8 @@ struct HomeView: View {
                     return AlertForDeleteSelected
                 case .deleteAll:
                     return AlertForDeleteAll
+                case .newResult(let result):
+                    return AlertForNewResult(result)
                 }
             }
             .sheet(isPresented: $viewModel.showSettingsView, content: {
@@ -98,7 +100,6 @@ extension HomeView {
                         .font(.callout.bold())
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                
             }
         }
         .padding()
@@ -162,9 +163,9 @@ extension HomeView {
         Alert(title: Text("確認"),
               message: Text("すべての履歴を削除してよろしいですか？"),
               primaryButton: .destructive(Text("削除する")) {
-            // TODO: 履歴のリストからすべての履歴を削除する
             DispatchQueue.main.async {
                 withAnimation {
+                    self.viewModel.deleteAllResults()
                     self.viewModel.editMode = .inactive
                 }
             }
@@ -176,14 +177,22 @@ extension HomeView {
         Alert(title: Text("確認"),
               message: Text("選択した履歴を削除してよろしいですか？"),
               primaryButton: .destructive(Text("削除する")) {
-            // TODO: 履歴のリストから選択した履歴を削除する
             DispatchQueue.main.async {
                 withAnimation {
+                    self.viewModel.deleteSelectedResults()
                     self.viewModel.editMode = .inactive
                 }
             }
         },
               secondaryButton: .default(Text("キャンセル")))
+    }
+    
+    private func AlertForNewResult(_ result: TestResult) -> Alert {
+        let title = "結果: \(result.isContained ? "OK" : "NG")"
+        let message = "時間範囲：\(result.timeRange.start)時 ~ \(result.timeRange.end)時\n判定対象時刻：\(result.target)時"
+        return Alert(title: Text(title),
+                     message: Text(message),
+                     dismissButton: .default(Text("OK")))
     }
 }
 

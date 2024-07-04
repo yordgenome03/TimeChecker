@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
-    @Environment(\.dismiss) var dismiss
-    
+    @Environment(\.presentationMode) var presentationMode
+
     var delegate: SettingsViewModelDelegate
 
     var body: some View {
@@ -39,7 +39,7 @@ struct SettingsView: View {
                     PrimaryButton(title: "判定開始") {
                         do {
                             try viewModel.judgeAndSaveResult()
-                            dismiss()
+                            presentationMode.wrappedValue.dismiss()
                         } catch {
                             // TODO: エラー表示
                         }
