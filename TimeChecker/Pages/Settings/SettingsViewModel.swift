@@ -16,6 +16,7 @@ class SettingsViewModel: ObservableObject {
     @Published var startTime: Int = 0
     @Published var endTime: Int = 0
     @Published var targetTime: Int = 0
+    @Published var error: TimeRangeError?
     
     weak var delegate: SettingsViewModelDelegate?
 

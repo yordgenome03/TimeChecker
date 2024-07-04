@@ -41,7 +41,11 @@ struct SettingsView: View {
                             try viewModel.judgeAndSaveResult()
                             presentationMode.wrappedValue.dismiss()
                         } catch {
-                            // TODO: エラー表示
+                            if let error = error as? TimeRangeError {
+                                viewModel.error = error
+                            } else {
+                                viewModel.error = TimeRangeError.unknown
+                            }
                         }
                     }
                     
@@ -50,6 +54,11 @@ struct SettingsView: View {
                 .padding()
             }
             .navigationTitle("Settings")
+            .alert(item: $viewModel.error) { error in
+                Alert(title: Text("エラー"),
+                      message: Text(error.description),
+                             dismissButton: .default(Text("OK")))
+            }
             .onAppear {
                 viewModel.delegate = delegate
             }
