@@ -7,25 +7,14 @@
 
 import SwiftUI
 
-struct HomeView: View {
-    enum AlertType: Identifiable {
-        case deleteSelected
-        case deleteAll
-        
-        var id: Int { hashValue }
-    }
-    
-    @State private var testResults: [TestResult] = []
-    @State private var selection = Set<UUID>()
-    @State private var editMode: EditMode = .inactive
-    @State private var alertType: AlertType?
-    @State private var showSettingsView = false
+struct HomeView: View {    
+    @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
         NavigationView {
             VStack {
                 PrimaryButton(title: "条件を設定して時刻を判定する") {
-                    showSettingsView.toggle()
+                    viewModel.showSettingsView.toggle()
                 }
                 .padding()
                 
@@ -35,18 +24,18 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    if !testResults.isEmpty {
+                    if !viewModel.testResults.isEmpty {
                         EditHistoryButtons
                     }
                     
                 }
                 .padding()
                 
-                if testResults.isEmpty {
+                if viewModel.testResults.isEmpty {
                     Text("表示する判定結果がありません。")
                 } else {
-                    List(selection: $selection) {
-                        ForEach(testResults, id: \.id) { result in
+                    List(selection: $viewModel.selection) {
+                        ForEach(viewModel.testResults, id: \.id) { result in
                             ResultView(result)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
@@ -57,8 +46,8 @@ struct HomeView: View {
                 Spacer()
             }
             .navigationTitle("Time Checker")
-            .environment(\.editMode, $editMode)
-            .alert(item: $alertType) { alertType in
+            .environment(\.editMode, $viewModel.editMode)
+            .alert(item: $viewModel.alertType) { alertType in
                 switch alertType {
                 case .deleteSelected:
                     return AlertForDeleteSelected
@@ -66,12 +55,11 @@ struct HomeView: View {
                     return AlertForDeleteAll
                 }
             }
-            .sheet(isPresented: $showSettingsView, content: {
+            .sheet(isPresented: $viewModel.showSettingsView, content: {
                 SettingsView()
             })
             .onAppear {
-                // TODO: 履歴取得処理と差し替える
-                testResults = TestResult.mockArray
+                viewModel.fetchTestResults()
             }
         }
     }
@@ -119,10 +107,10 @@ extension HomeView {
     
     @ViewBuilder
     private var EditHistoryButtons: some View {
-        if editMode == .inactive {
+        if viewModel.editMode == .inactive {
             HStack(spacing: 16) {
                 Button {
-                    alertType = .deleteAll
+                    viewModel.alertType = .deleteAll
                 } label: {
                     HStack(spacing: 4) {
                         Image(systemName: "trash.fill")
@@ -133,7 +121,7 @@ extension HomeView {
                 
                 Button {
                     withAnimation {
-                        editMode = .active
+                        viewModel.editMode = .active
                     }
                 } label: {
                     HStack(spacing: 4) {
@@ -142,10 +130,10 @@ extension HomeView {
                     }
                 }
             }
-        } else if editMode == .active {
+        } else if viewModel.editMode == .active {
             HStack(spacing: 16) {
                 Button {
-                    alertType = .deleteSelected
+                    viewModel.alertType = .deleteSelected
                 } label: {
                     HStack(spacing: 4) {
                         Image(systemName: "trash")
@@ -153,12 +141,12 @@ extension HomeView {
                     }
                     .foregroundColor(.red)
                 }
-                .disabled(selection.isEmpty)
-                .opacity(selection.isEmpty ? 0.5 : 1.0)
+                .disabled(viewModel.selection.isEmpty)
+                .opacity(viewModel.selection.isEmpty ? 0.5 : 1.0)
                 
                 Button {
                     withAnimation {
-                        editMode = .inactive
+                        viewModel.editMode = .inactive
                     }
                 } label: {
                     HStack(spacing: 4) {
@@ -177,7 +165,7 @@ extension HomeView {
             // TODO: 履歴のリストからすべての履歴を削除する
             DispatchQueue.main.async {
                 withAnimation {
-                    self.editMode = .inactive
+                    self.viewModel.editMode = .inactive
                 }
             }
         },
@@ -191,7 +179,7 @@ extension HomeView {
             // TODO: 履歴のリストから選択した履歴を削除する
             DispatchQueue.main.async {
                 withAnimation {
-                    self.editMode = .inactive
+                    self.viewModel.editMode = .inactive
                 }
             }
         },
