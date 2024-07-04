@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var startTime: Int = 0
-    @State private var endTime: Int = 0
-    @State private var targetTime: Int = 0
+    @StateObject private var viewModel = SettingsViewModel()
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -22,9 +20,9 @@ struct SettingsView: View {
                             .font(.headline)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
-                        timeSettingComponent(title: "開始時刻", value: $startTime)
+                        timeSettingComponent(title: "開始時刻", value: $viewModel.startTime)
                         
-                        timeSettingComponent(title: "終了時刻", value: $endTime)
+                        timeSettingComponent(title: "終了時刻", value: $viewModel.endTime)
                     }
                     
                     VStack {
@@ -33,11 +31,11 @@ struct SettingsView: View {
                             .font(.headline)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
-                        timeSettingComponent(title: "判定する対象の時刻", value: $targetTime)
+                        timeSettingComponent(title: "判定する対象の時刻", value: $viewModel.targetTime)
                     }
                     
                     PrimaryButton(title: "判定開始") {
-                        // TODO: 判定処理・履歴保存処理を実装
+                        viewModel.judgeAndSaveResult()
                         dismiss()
                     }
                     

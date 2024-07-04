@@ -15,6 +15,7 @@
 		A1BAC87E2C367F2500F96F77 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC87D2C367F2500F96F77 /* SettingsView.swift */; };
 		A1BAC8812C36815B00F96F77 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8802C36815B00F96F77 /* PrimaryButton.swift */; };
 		A1BAC8842C3685CD00F96F77 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8832C3685CD00F96F77 /* HomeViewModel.swift */; };
+		A1BAC8862C3688FF00F96F77 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8852C3688FF00F96F77 /* SettingsViewModel.swift */; };
 		A1CA0F1A2C364C760057711F /* TimeCheckerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA0F192C364C760057711F /* TimeCheckerApp.swift */; };
 		A1CA0F1E2C364C780057711F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CA0F1D2C364C780057711F /* Assets.xcassets */; };
 		A1CA0F212C364C780057711F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CA0F202C364C780057711F /* Preview Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		A1BAC87D2C367F2500F96F77 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A1BAC8802C36815B00F96F77 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		A1BAC8832C3685CD00F96F77 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A1BAC8852C3688FF00F96F77 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		A1CA0F162C364C760057711F /* TimeChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CA0F192C364C760057711F /* TimeCheckerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckerApp.swift; sourceTree = "<group>"; };
 		A1CA0F1D2C364C780057711F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		A1BAC87C2C367B3600F96F77 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				A1BAC8852C3688FF00F96F77 /* SettingsViewModel.swift */,
 				A1BAC87D2C367F2500F96F77 /* SettingsView.swift */,
 			);
 			path = Settings;
@@ -335,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1CA0F1A2C364C760057711F /* TimeCheckerApp.swift in Sources */,
+				A1BAC8862C3688FF00F96F77 /* SettingsViewModel.swift in Sources */,
 				A1BAC8812C36815B00F96F77 /* PrimaryButton.swift in Sources */,
 				A1BAC8842C3685CD00F96F77 /* HomeViewModel.swift in Sources */,
 				A1BAC86E2C3671B200F96F77 /* TimeRangeError.swift in Sources */,
