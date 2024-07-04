@@ -14,11 +14,20 @@ class UserDefaultsService {
         }
     }
     
-    func fetch() -> [TestResult] {
+    func fetchResults() -> [TestResult] {
         if let data = UserDefaults.standard.data(forKey: Keys.testResults),
            let results = try? JSONDecoder().decode([TestResult].self, from: data) {
             return results
         }
         return []
+    }
+    
+    func delete(results: [TestResult]) {
+        let currentResults = fetchResults().filter { !results.contains($0) }
+        save(results: currentResults)
+    }
+    
+    func deleteAllResults() {
+        UserDefaults.standard.removeObject(forKey: Keys.testResults)
     }
 }

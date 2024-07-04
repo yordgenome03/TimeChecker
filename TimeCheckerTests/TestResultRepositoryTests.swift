@@ -17,7 +17,7 @@ final class TestResultRepositoryTests: XCTestCase {
     override func setUpWithError() throws {
         repository = TestResultRepository()
         service = UserDefaultsService()
-        backUpResults = service.fetch()
+        backUpResults = service.fetchResults()
         
         removeSavedResults()
     }
@@ -35,10 +35,10 @@ final class TestResultRepositoryTests: XCTestCase {
     }
     
     private func removeSavedResults() {
-        service.save(results: [])
+        service.deleteAllResults()
     }
     
-    func testSaveAndFetchResults() {
+    func testSaveAndFetchAndDeleteResults() {
         let initialResults = repository.fetchResults()
         XCTAssertTrue(initialResults.isEmpty)
         
@@ -50,9 +50,37 @@ final class TestResultRepositoryTests: XCTestCase {
         
         let secondResult = TestResult(timeRange: .mock_zeroToZero, target: 0)!
         repository.saveResult(secondResult)
-        let fetchedSecondResults = service.fetch()
+        let fetchedSecondResults = service.fetchResults()
         XCTAssertEqual(fetchedSecondResults.count, 2)
         XCTAssertEqual(fetchedSecondResults.first, secondResult)
         XCTAssertEqual(fetchedSecondResults[1], firstResult)
+        
+        let thirdResult = TestResult(timeRange: .mock_sixteenToEight, target: 22)!
+        repository.saveResult(thirdResult)
+        let fetchedThirdResults = service.fetchResults()
+        XCTAssertEqual(fetchedThirdResults.count, 3)
+        XCTAssertEqual(fetchedThirdResults.first, thirdResult)
+        XCTAssertEqual(fetchedThirdResults[1], secondResult)
+        XCTAssertEqual(fetchedThirdResults[2], firstResult)
+        
+        repository.deleteResults([firstResult, thirdResult])
+        let fetchedDeletedResults = service.fetchResults()
+        XCTAssertEqual(fetchedDeletedResults.count, 1)
+        XCTAssertEqual(fetchedDeletedResults.first, secondResult)
     }
-}
+    
+    func testDeleteAllResults() {
+        let initialResults = repository.fetchResults()
+        XCTAssertTrue(initialResults.isEmpty)
+        
+        let firstResult = TestResult(timeRange: .mock_eightToSixteen, target: 5)!
+        repository.saveResult(firstResult)
+        let secondResult = TestResult(timeRange: .mock_zeroToZero, target: 0)!
+        repository.saveResult(secondResult)
+        let fetchedNewResults = repository.fetchResults()
+        XCTAssertEqual(fetchedNewResults, [secondResult, firstResult])
+        
+        repository.deleteAllResults()
+        let fetchedDeletedResults = repository.fetchResults()
+        XCTAssertTrue(fetchedDeletedResults.isEmpty)
+    }}
