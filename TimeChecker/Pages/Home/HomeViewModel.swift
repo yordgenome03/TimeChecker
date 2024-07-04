@@ -22,7 +22,8 @@ class HomeViewModel: ObservableObject {
     @Published var editMode: EditMode = .inactive
     @Published var alertType: AlertType?
     @Published var showSettingsView = false
-    
+    @Published var showDescription = true
+
     private let repository: TestResultRepositoryInterface
     
     init(repository: TestResultRepositoryInterface = TestResultRepository()) {

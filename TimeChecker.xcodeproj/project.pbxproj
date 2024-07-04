@@ -21,6 +21,7 @@
 		A1BAC88D2C36918700F96F77 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC88C2C36918700F96F77 /* Constants.swift */; };
 		A1BAC88F2C36950800F96F77 /* TestResultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC88E2C36950800F96F77 /* TestResultRepository.swift */; };
 		A1BAC8912C36966400F96F77 /* TestResultRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8902C36966400F96F77 /* TestResultRepositoryTests.swift */; };
+		A1BAC8932C36DC1300F96F77 /* IconTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC8922C36DC1300F96F77 /* IconTextButton.swift */; };
 		A1CA0F1A2C364C760057711F /* TimeCheckerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA0F192C364C760057711F /* TimeCheckerApp.swift */; };
 		A1CA0F1E2C364C780057711F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CA0F1D2C364C780057711F /* Assets.xcassets */; };
 		A1CA0F212C364C780057711F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CA0F202C364C780057711F /* Preview Assets.xcassets */; };
@@ -61,6 +62,7 @@
 		A1BAC88C2C36918700F96F77 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A1BAC88E2C36950800F96F77 /* TestResultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultRepository.swift; sourceTree = "<group>"; };
 		A1BAC8902C36966400F96F77 /* TestResultRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultRepositoryTests.swift; sourceTree = "<group>"; };
+		A1BAC8922C36DC1300F96F77 /* IconTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextButton.swift; sourceTree = "<group>"; };
 		A1CA0F162C364C760057711F /* TimeChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CA0F192C364C760057711F /* TimeCheckerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckerApp.swift; sourceTree = "<group>"; };
 		A1CA0F1D2C364C780057711F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		A1BAC87F2C36814F00F96F77 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A1BAC8922C36DC1300F96F77 /* IconTextButton.swift */,
 				A1BAC8802C36815B00F96F77 /* PrimaryButton.swift */,
 			);
 			path = Components;
@@ -366,6 +369,7 @@
 				A1BAC8842C3685CD00F96F77 /* HomeViewModel.swift in Sources */,
 				A1BAC8882C368B9800F96F77 /* UserDefaultsService.swift in Sources */,
 				A1BAC86E2C3671B200F96F77 /* TimeRangeError.swift in Sources */,
+				A1BAC8932C36DC1300F96F77 /* IconTextButton.swift in Sources */,
 				A1BAC86B2C366F0800F96F77 /* TimeRange.swift in Sources */,
 				A1BAC88F2C36950800F96F77 /* TestResultRepository.swift in Sources */,
 				A1BAC87A2C36769D00F96F77 /* Binding+Equatable..swift in Sources */,

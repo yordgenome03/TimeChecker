@@ -10,10 +10,36 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @State private var alertType: HomeViewModel.AlertType?
-    
+
     var body: some View {
         NavigationView {
             VStack {
+                Button {
+                    withAnimation {
+                        viewModel.showDescription.toggle()
+                    }
+                } label: {
+                    HStack {
+                        Image(systemName: "quote.bubble")
+                            .font(.title)
+                    }
+                }
+                .padding(.top, 16)
+                
+                if viewModel.showDescription {
+                    VStack(spacing: 24) {
+                        Text("【概要】\nこのアプリは、開始時刻と終了時刻、判定対象時刻を入力し、判定対象時刻が指定した時刻の範囲にあるかどうかを判定します。")
+                        
+                        Text("【ルール】\n・範囲指定は、開始時刻を含み、終了時刻は含まない。\n・開始時刻が22時で終了時刻が5時、というような指定の場合、終了時刻を翌5時と判定する。\n・判定結果OK；対象時刻が指定範囲内。\n・判定結果NG：対象時刻が指定範囲外。")
+                    }
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.accentColor, lineWidth: 2)
+                    )
+                    .padding()
+                }
                 PrimaryButton(title: "条件を設定して時刻を判定する") {
                     withAnimation {
                         viewModel.editMode = .inactive
@@ -100,7 +126,7 @@ extension HomeView {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 HStack {
-                    Text("判定対象時刻：")
+                    Text("対象時刻：")
                         .font(.footnote)
                     
                     Text("\(result.target)時")
@@ -117,49 +143,27 @@ extension HomeView {
     private var EditHistoryButtons: some View {
         if viewModel.editMode == .inactive {
             HStack(spacing: 16) {
-                Button {
+                IconTextButton(title: "すべて削除する", systemImage: "trash.fill", color: .red) {
                     viewModel.alertType = .deleteAll
-                } label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "trash.fill")
-                        Text("すべて削除する")
-                    }
-                    .foregroundColor(.red)
                 }
-                
-                Button {
+
+                IconTextButton(title: "編集", systemImage: "square.and.pencil", color: .accentColor) {
                     withAnimation {
                         viewModel.editMode = .active
-                    }
-                } label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "square.and.pencil")
-                        Text("編集")
                     }
                 }
             }
         } else if viewModel.editMode == .active {
             HStack(spacing: 16) {
-                Button {
+                IconTextButton(title: "削除", systemImage: "trash", color: .red) {
                     viewModel.alertType = .deleteSelected
-                } label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "trash")
-                        Text("削除")
-                    }
-                    .foregroundColor(.red)
                 }
                 .disabled(viewModel.selection.isEmpty)
                 .opacity(viewModel.selection.isEmpty ? 0.5 : 1.0)
                 
-                Button {
+                IconTextButton(title: "編集を中止", systemImage: "xmark", color: .accentColor) {
                     withAnimation {
                         viewModel.editMode = .inactive
-                    }
-                } label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "xmark")
-                        Text("編集を中止")
                     }
                 }
             }
