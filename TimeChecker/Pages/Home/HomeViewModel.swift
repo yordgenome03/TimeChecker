@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-@MainActor
 class HomeViewModel: ObservableObject {
+    
     enum AlertType: Identifiable {
         case deleteSelected
         case deleteAll
@@ -22,22 +22,43 @@ class HomeViewModel: ObservableObject {
     @Published var alertType: AlertType?
     @Published var showSettingsView = false
     
+    private let repository: TestResultRepositoryInterface
+    
+    init(repository: TestResultRepositoryInterface = TestResultRepository()) {
+        self.repository = repository
+    }
+    
+    @MainActor
     func fetchTestResults() {
-        // TODO: 履歴取得処理を実装する
-        testResults = TestResult.mockArray
+        testResults = repository.fetchResults()
     }
     
+    @MainActor
     func deleteSelectedResults() {
-        // TODO: 選択した履歴を削除する処理を実装する
+        let selectedResults = testResults.filter { selection.contains($0.id) }
+        repository.deleteResults(selectedResults)
         withAnimation {
+            testResults = repository.fetchResults()
             editMode = .inactive
         }
     }
     
+    @MainActor
     func deleteAllResults() {
-        // TODO: すべての履歴を削除する処理を実装する
+        repository.deleteAllResults()
         withAnimation {
+            testResults = []
             editMode = .inactive
         }
+    }
+}
+
+// MARK: - SettingsViewModelDelegate
+
+extension HomeViewModel: SettingsViewModelDelegate {
+    
+    @MainActor
+    func didSaveTestResult(_ result: TestResult) {
+        fetchTestResults()
     }
 }

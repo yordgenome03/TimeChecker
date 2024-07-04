@@ -10,6 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
     @Environment(\.dismiss) var dismiss
+    
+    var delegate: SettingsViewModelDelegate
 
     var body: some View {
         NavigationView {
@@ -35,8 +37,12 @@ struct SettingsView: View {
                     }
                     
                     PrimaryButton(title: "判定開始") {
-                        viewModel.judgeAndSaveResult()
-                        dismiss()
+                        do {
+                            try viewModel.judgeAndSaveResult()
+                            dismiss()
+                        } catch {
+                            // TODO: エラー表示
+                        }
                     }
                     
                     Spacer()
@@ -44,6 +50,9 @@ struct SettingsView: View {
                 .padding()
             }
             .navigationTitle("Settings")
+            .onAppear {
+                viewModel.delegate = delegate
+            }
         }
     }
 }
@@ -86,5 +95,5 @@ extension SettingsView {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(delegate: HomeViewModel())
 }

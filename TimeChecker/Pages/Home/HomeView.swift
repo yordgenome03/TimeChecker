@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {    
+struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
@@ -56,7 +56,7 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $viewModel.showSettingsView, content: {
-                SettingsView()
+                SettingsView(delegate: viewModel)
             })
             .onAppear {
                 viewModel.fetchTestResults()
