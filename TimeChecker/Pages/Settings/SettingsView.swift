@@ -23,9 +23,9 @@ struct SettingsView: View {
                             .font(.headline)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
-                        timeSettingComponent(title: "開始時刻", value: $viewModel.startTime)
+                        TimeSettingComponent(title: "開始時刻", value: $viewModel.startTime)
                         
-                        timeSettingComponent(title: "終了時刻", value: $viewModel.endTime)
+                        TimeSettingComponent(title: "終了時刻", value: $viewModel.endTime)
                     }
                     
                     VStack {
@@ -34,7 +34,7 @@ struct SettingsView: View {
                             .font(.headline)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
-                        timeSettingComponent(title: "判定する対象の時刻", value: $viewModel.targetTime)
+                        TimeSettingComponent(title: "判定する対象の時刻", value: $viewModel.targetTime)
                     }
                     
                     PrimaryButton(title: "判定開始") {
@@ -55,39 +55,6 @@ struct SettingsView: View {
                 .padding()
             }
             .navigationTitle("Settings")
-            .toolbar{
-                ToolbarItem(placement: .navigationBarTrailing){
-                    HStack{
-                        Spacer()
-                        
-                        if self.showKeyboard {
-                            Button {
-                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                            } label: {
-                                HStack(spacing: 0) {
-                                    Image(systemName: "xmark")
-                                    Image(systemName: "keyboard")
-                                }
-                                .padding(4)
-                                .background(
-                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.accentColor)
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
-                withAnimation {
-                    self.showKeyboard = true
-                }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
-                withAnimation {
-                    self.showKeyboard = false
-                }
-            }
             .alert(item: $viewModel.error) { error in
                 Alert(title: Text("エラー"),
                       message: Text(error.description),
@@ -101,27 +68,28 @@ struct SettingsView: View {
 }
 
 extension SettingsView {
-    private func timeSettingComponent(title: String, value: Binding<Int>) -> some View {
+    private func TimeSettingComponent(title: String, value: Binding<Int>) -> some View {
         VStack {
             Text(title)
                 .font(.title3.bold())
                 .frame(maxWidth: .infinity, alignment: .center)
-            HStack(spacing: 8) {
+            HStack(spacing: 16) {
                 HStack(spacing: 8) {
-                    TextField("", value: value, formatter: NumberFormatter())
-                        .font(.title2)
-                        .multilineTextAlignment(.center)
-                        .keyboardType(.numberPad)
-                        .padding(4)
-                        .background(
-                            Rectangle()
-                                .frame(height: 1)
-                                .frame(maxHeight: .infinity, alignment: .bottom)
-                        )
+                    ClosableNumberField(value: value,
+                                        placeholder: "",
+                                        maxWidth: 40)
+                    .frame(width: 40)
+                    .padding(4)
+                    .background(
+                        Rectangle()
+                            .frame(height: 1)
+                            .frame(maxHeight: .infinity, alignment: .bottom)
+                    )
+                    
                     Text("時")
                 }
-                .frame(width: 88)
-                
+                .frame(width: 80)
+
                 Stepper(value: value, in: 0...23) {
                     Text("")
                 }

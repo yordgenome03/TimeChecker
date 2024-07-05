@@ -10,9 +10,11 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @State private var alertType: HomeViewModel.AlertType?
+    
+    @State var text: String = ""
     var body: some View {
         NavigationView {
-            VStack {
+            VStack {                
                 Button {
                     withAnimation {
                         viewModel.showDescription.toggle()
