@@ -86,12 +86,17 @@ struct ClosableNumberField: UIViewRepresentable {
             guard let currentText = textField.text else { return true }
             let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
             
+            let intValue = Int(prospectiveText) ?? 0
+            
             let font = textField.font ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)
             let size = (prospectiveText as NSString).size(withAttributes: [.font: font])
             
-            parent.value = Int(textField.text ?? "") ?? 0
-            return size.width <= parent.maxWidth
-        }
+            if size.width <= parent.maxWidth {
+                parent.value = intValue
+                return true
+            } else {
+                return false
+            }        }
         
         @objc func doneButtonTapped() {
             textField?.resignFirstResponder()
